@@ -1,0 +1,21 @@
+version: '2'
+services:
+  dev:
+    image: node:9.6.1
+    command: bash
+    working_dir: /app
+    user: '1000:1000'
+    volumes: 
+    - .:/app
+
+  index:
+    image: node:9.5
+    command: node index.js
+    user: '1000:1000'
+    working_dir: /app
+    volumes: 
+    - .:/app
+
+#process.stdin
+#process.stdout
+#process.exit(0)
