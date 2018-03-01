@@ -4,13 +4,20 @@ const morgan = require('morgan')
 const {
     listAllGames,
     findGame,
+    createGame
 } = require('./data')
 
 const app = express()
 const router = express.Router()
 //const routes = require('./routes')
 
+const publicRoot = 'public'
+app.use(express.static(publicRoot))
+
+//ATTENTION A L'ORDRE !
 app.use(morgan('tiny'))
+app.use(express.json())
+app.use(express.urlencoded())
 app.use(router)
 
 app.use((req, res, next) => { //next est le middleware et si le next() dedans est caché, la page ne chargera pas
@@ -20,6 +27,8 @@ app.use((req, res, next) => { //next est le middleware et si le next() dedans es
 
 const myCompression = compression()
 app.use(myCompression)
+
+
 
 router.get('/', (req, res) => {
         listAllGames()
@@ -35,6 +44,8 @@ router.get('/', (req, res) => {
     return
 
 })
+
+
 
 router.get('/games/:id', (req, res) => {
     const id = req.params.id
@@ -53,6 +64,8 @@ router.get('/games/:id', (req, res) => {
                     <section>
                       <h2>Tour numéro ${game.turn}</h2>
                     </section>
+                    <p>${game.player1}</p>
+                    <p>${game.player2}</p>
                  </body>
                 </html>
         `)
@@ -61,6 +74,20 @@ router.get('/games/:id', (req, res) => {
         })
 
 })
+
+//POST
+router.post('/game', (req, res) => {
+
+    createGame({
+        player1: req.body.player1,
+        player2: req.body.player2
+    })
+        .then( result => {
+            res.redirect(303, '/games/'+result._id)
+            //res.send("Voici venir la bataille entre " + req.body.player1 + " et " + req.body.player2)
+        })
+})
+
 
 
 function renderGames(games) {
@@ -76,12 +103,17 @@ function renderGames(games) {
          </head>
          <body>
             <h1>Bienvenue</h1>
-            <section>
               <h2>Toutes les parties</h2>
+              <form action="/game" method="POST">
+                <input type="text" name="player1">
+                <br>
+                <input type="text" name="player2">
+                <br>
+                <input type="submit" value="New game">
+              </form>
                 <ul>
                     ${list}
                 </ul>
-            </section>
          </body>
         </html>
         

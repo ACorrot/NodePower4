@@ -13,7 +13,7 @@ module.exports = {
     createGame,
     findGame,
     saveGameTurn,
-    listAllGames,
+    listAllGames
 }
 
 function getCollection() {
@@ -25,14 +25,14 @@ function getCollection() {
         })
 }
 
-function createGame() {
+function createGame(data) {
     // TODO adapter donner
-    const doc = {
+    const doc = Object.assign({
         turn: 0,
         history: [{
             board: game.createEmptyBoard(),
         }]
-    }
+    }, data)
     return getCollection() //Insertion ?
         .then(col => {
             return col.insertOne(doc)
@@ -46,6 +46,7 @@ function createGame() {
         })
 }
 
+/*
 createGame()
     .then(doc => {
         const id = doc._id
@@ -61,6 +62,7 @@ createGame()
         console.error(err.stack)
         process.exit(1)
     })
+*/
 
 function toObjectId(id) {
     if (typeof id === 'string') {
@@ -109,23 +111,6 @@ function listAllGames() {
         })
 }
 
-/*createGame()
-    .then(doc => {
-        const id = doc._id
-        return saveGameTurn(id, 3, [1, 2, 3])
-            .then(result => {
-                console.log(result)
-                // return findGame(String(id))
-            })
-    })
-    .then(result => {
-        console.log(result)
-    })
-    .catch(err => {
-        console.error(err.stack)
-        process.exit(1)
-    })
-*/
 function testCreateGame() {
     createGame()
         .then(result => {
