@@ -28,6 +28,7 @@ function welcomeMessage(msg) {
 welcomeMessage()
 
 
+<<<<<<< HEAD
 function display(board){
     board.forEach(row => {
 
@@ -43,11 +44,29 @@ function display(board){
 
 
 
+=======
+
+function display(board){
+    board.forEach(row => {
+        
+        row.forEach(cell => {
+            write(String(chalk.whiteBright('[ ')))
+            write(String(cell))
+            write(String(chalk.whiteBright(' ]')))
+        })
+        
+        write(String('\n'))
+    })
+}
+
+
+>>>>>>> 064af24e069791738efa941a2f5d3785820652d0
 // Récup de la cellule. console.log(board[6][0])
 
 playGame()
 
 function playGame() {
+<<<<<<< HEAD
     const state = {
         board: board,
         turn: 0
@@ -56,6 +75,15 @@ function playGame() {
 }
 
 
+=======
+  const state = {
+    board: board,
+    turn: 0,
+    
+  }
+
+  promptNextMove(state)
+>>>>>>> 064af24e069791738efa941a2f5d3785820652d0
 
   function playNextMove(state) {
     promptNextMove(state)
@@ -69,6 +97,7 @@ function playGame() {
     //   promptNextMove(state)
     // }
   }
+<<<<<<< HEAD
     const tabHorizontal =[
         [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
         [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
@@ -88,26 +117,56 @@ function playGame() {
         [CELL_PLAYER1, CELL_PLAYER2, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
     ]
 
+=======
+  const tontab =[
+                  [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
+                  [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
+                  [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
+                  [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
+                  [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
+                  [CELL_PLAYER2, CELL_PLAYER2, CELL_PLAYER2, CELL_PLAYER2, CELL_EMPTY, CELL_EMPTY],
+                  [CELL_PLAYER1, CELL_PLAYER1, CELL_PLAYER1, CELL_PLAYER1, CELL_EMPTY, CELL_EMPTY]
+                ]
+>>>>>>> 064af24e069791738efa941a2f5d3785820652d0
   function checkWin() {
     flag = true
     for (let i = 0; i < 6; i++) {
         for (let j = 0; j < 7; j++) {
+<<<<<<< HEAD
             if (board[i][j] != tabHorizontal[i][j]) {
                 flag = false
         }
+=======
+            if (board[i][j] != tontab[i][j]) {
+                flag = false
+            }
+        } 
+>>>>>>> 064af24e069791738efa941a2f5d3785820652d0
     }
     return flag
   }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 064af24e069791738efa941a2f5d3785820652d0
   function promptNextMove(state) {
     const player = getPlayerForState(state)
     const displayPlayer = getDisplayPlayer(player)
     display(state.board)
+<<<<<<< HEAD
     const  question = `${displayPlayer}, prochain coup ? `
     prompt(question, answer => {
       let i = 6
       while (board[i][answer - 1] !== " ") {
         i--
+=======
+    const question = `${displayPlayer}, prochain coup ? `
+    prompt(question, answer => {
+      let i = 6
+      while (board[i][answer - 1] !== " ") {
+        i--  
+>>>>>>> 064af24e069791738efa941a2f5d3785820652d0
       }
       if(board[i][answer - 1] !== " ") {
         board[i][answer -1] = player
@@ -176,8 +235,23 @@ let i = 5
 */
 
 /*
+<<<<<<< HEAD
 //// Possibilités de gagner :
 //Horizontal
+=======
+//// Possibilités de gagner : 
+const board = [
+    [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
+    [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
+    [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
+    [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
+    [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
+    [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
+    [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
+]
+
+//Horizontal 
+>>>>>>> 064af24e069791738efa941a2f5d3785820652d0
 const board = [
     [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
     [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
