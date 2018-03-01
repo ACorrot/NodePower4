@@ -1,0 +1,20 @@
+{
+  "name": "puissance4",
+  "version": "1.0.0",
+  "description": "Un puissance 4",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.3.1",
+    "compression": "^1.7.2",
+    "express": "^4.16.2",
+    "mongodb": "^3.0.3",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.17.1"
+  }
+}
