@@ -7,9 +7,11 @@ const {
 } = require('./data')
 
 const app = express()
+const router = express.Router()
+//const routes = require('./routes')
 
 app.use(morgan('tiny'))
-
+app.use(router)
 
 app.use((req, res, next) => { //next est le middleware et si le next() dedans est caché, la page ne chargera pas
     next()
@@ -19,7 +21,7 @@ app.use((req, res, next) => { //next est le middleware et si le next() dedans es
 const myCompression = compression()
 app.use(myCompression)
 
-app.get('/', (req, res) => {
+router.get('/', (req, res) => {
         listAllGames()
         .then(games => {
             const html = renderGames(games)
@@ -34,7 +36,7 @@ app.get('/', (req, res) => {
 
 })
 
-app.get('/games/:id', (req, res) => {
+router.get('/games/:id', (req, res) => {
     const id = req.params.id
     findGame(id)
         .then(game => {
