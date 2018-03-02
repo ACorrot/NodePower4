@@ -27,25 +27,6 @@ function welcomeMessage(msg) {
 
 welcomeMessage()
 
-
-<<<<<<< HEAD
-function display(board){
-    board.forEach(row => {
-
-        row.forEach(cell => {
-        write(String(chalk.whiteBright('[ ')))
-    write(String(cell))
-    write(String(chalk.whiteBright(' ]')))
-})
-
-    write(String('\n'))
-})
-}
-
-
-
-=======
-
 function display(board){
     board.forEach(row => {
         
@@ -60,13 +41,11 @@ function display(board){
 }
 
 
->>>>>>> 064af24e069791738efa941a2f5d3785820652d0
 // Récup de la cellule. console.log(board[6][0])
 
 playGame()
 
 function playGame() {
-<<<<<<< HEAD
     const state = {
         board: board,
         turn: 0
@@ -75,7 +54,6 @@ function playGame() {
 }
 
 
-=======
   const state = {
     board: board,
     turn: 0,
@@ -83,7 +61,6 @@ function playGame() {
   }
 
   promptNextMove(state)
->>>>>>> 064af24e069791738efa941a2f5d3785820652d0
 
   function playNextMove(state) {
     promptNextMove(state)
@@ -97,7 +74,6 @@ function playGame() {
     //   promptNextMove(state)
     // }
   }
-<<<<<<< HEAD
     const tabHorizontal =[
         [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
         [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
@@ -117,7 +93,6 @@ function playGame() {
         [CELL_PLAYER1, CELL_PLAYER2, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
     ]
 
-=======
   const tontab =[
                   [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
                   [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
@@ -127,67 +102,57 @@ function playGame() {
                   [CELL_PLAYER2, CELL_PLAYER2, CELL_PLAYER2, CELL_PLAYER2, CELL_EMPTY, CELL_EMPTY],
                   [CELL_PLAYER1, CELL_PLAYER1, CELL_PLAYER1, CELL_PLAYER1, CELL_EMPTY, CELL_EMPTY]
                 ]
->>>>>>> 064af24e069791738efa941a2f5d3785820652d0
   function checkWin() {
     flag = true
     for (let i = 0; i < 6; i++) {
         for (let j = 0; j < 7; j++) {
-<<<<<<< HEAD
             if (board[i][j] != tabHorizontal[i][j]) {
                 flag = false
         }
-=======
             if (board[i][j] != tontab[i][j]) {
                 flag = false
             }
         } 
->>>>>>> 064af24e069791738efa941a2f5d3785820652d0
     }
     return flag
   }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 064af24e069791738efa941a2f5d3785820652d0
-  function promptNextMove(state) {
+function promptNextMove(state) {
     const player = getPlayerForState(state)
     const displayPlayer = getDisplayPlayer(player)
     display(state.board)
-<<<<<<< HEAD
     const  question = `${displayPlayer}, prochain coup ? `
     prompt(question, answer => {
-      let i = 6
-      while (board[i][answer - 1] !== " ") {
-        i--
-=======
-    const question = `${displayPlayer}, prochain coup ? `
-    prompt(question, answer => {
-      let i = 6
-      while (board[i][answer - 1] !== " ") {
-        i--  
->>>>>>> 064af24e069791738efa941a2f5d3785820652d0
-      }
-      if(board[i][answer - 1] !== " ") {
-        board[i][answer -1] = player
-        //console.log('\033[2j')
-        if(checkWin()){
-            console.log("caca")
-        }
-        state.turn++
-        promptNextMove(state)
+        let i = 6
+        while (board[i][answer - 1] !== " ") {
+            i--
+            const question = `${displayPlayer}, prochain coup ? `
+            prompt(question, answer => {
+                let i = 6
+                while (board[i][answer - 1] !== " ") {
+                    i--
+                }
+                if (board[i][answer - 1] !== " ") {
+                    board[i][answer - 1] = player
+                    //console.log('\033[2j')
+                    if (checkWin()) {
+                        console.log("caca")
+                    }
+                    state.turn++
+                    promptNextMove(state)
 
-      } else {
-        board[i][answer -1] = player
-        //console.log('\033[2J')
-        if(checkWin()){
-            console.log("caca")
-        }
-        state.turn++
-        promptNextMove(state)
-      }
-    })
-  }
+                } else {
+                    board[i][answer - 1] = player
+                    //console.log('\033[2J')
+                    if (checkWin()) {
+                        console.log("caca")
+                    }
+                    state.turn++
+                    promptNextMove(state)
+                }
+            })
+}
+
   function getPlayerForState(state) {
     const turn = state.turn
     if (turn % 2 === 0) {
@@ -204,7 +169,7 @@ function playGame() {
       default: throw new Error('Invalid player: ' + player)
     }
   }
-}
+
 
 function prompt(question, callback) {
   rl.question(question, callback)
@@ -213,74 +178,3 @@ function prompt(question, callback) {
 function write(msg) {
   process.stdout.write(msg)
 }
-
-/*
-let i = 5
-        while (state.board[i][answer-1] != 0) {
-            i--
-        }
-        state.board[i][answer-1] = player
-*/
-
- /*
-        try {
-            board[i][answer -1] = player
-        } catch(err) {
-            if (err instanceof TypeError) {
-
-            } else {
-                throw
-            }
-        }
-*/
-
-/*
-<<<<<<< HEAD
-//// Possibilités de gagner :
-//Horizontal
-=======
-//// Possibilités de gagner : 
-const board = [
-    [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
-    [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
-    [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
-    [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
-    [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
-    [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
-    [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
-]
-
-//Horizontal 
->>>>>>> 064af24e069791738efa941a2f5d3785820652d0
-const board = [
-    [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
-    [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
-    [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
-    [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
-    [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
-    [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
-    [CELL_PLAYER1, CELL_PLAYER1, CELL_PLAYER1, CELL_PLAYER1, CELL_EMPTY, CELL_EMPTY],
-]
-
-//Vertical
-const board = [
-    [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
-    [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
-    [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
-    [CELL_PLAYER1, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
-    [CELL_PLAYER1, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
-    [CELL_PLAYER1, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
-    [CELL_PLAYER1, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
-]
-
-//Oblique
-const board = [
-    [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
-    [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
-    [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
-    [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_PLAYER1, CELL_EMPTY, CELL_EMPTY],
-    [CELL_EMPTY, CELL_EMPTY, CELL_PLAYER1, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
-    [CELL_EMPTY, CELL_PLAYER1, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
-    [CELL_PLAYER1, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
-]
-*/

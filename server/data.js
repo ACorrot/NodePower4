@@ -25,7 +25,7 @@ function getCollection() {
         })
 }
 
-function createGame(data) {
+function createGame(data, id) {
     // TODO adapter donner
     const doc = Object.assign({
         turn: 0,
@@ -46,23 +46,6 @@ function createGame(data) {
         })
 }
 
-/*
-createGame()
-    .then(doc => {
-        const id = doc._id
-        return saveGameTurn(id, 3, [1, 2, 3])
-            .then(result => {
-                return listAllGames()
-            })
-    })
-    .then(result => {
-        console.log(result)
-    })
-    .catch(err => {
-        console.error(err.stack)
-        process.exit(1)
-    })
-*/
 
 function toObjectId(id) {
     if (typeof id === 'string') {
@@ -99,6 +82,7 @@ function saveGameTurn(id, turn, board) {
 }
 
 
+
 //Pour trier une collection
 function listAllGames() {
     return getCollection()
@@ -110,6 +94,8 @@ function listAllGames() {
                 .toArray()
         })
 }
+
+
 
 function testCreateGame() {
     createGame()
